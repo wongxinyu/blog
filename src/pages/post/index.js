@@ -40,14 +40,28 @@ class Post extends Component {
       "35051785-fd3a9fc6-fbe0-11e7-8faf-a97facebe5ce"
     ].map(
       v => "https://user-images.githubusercontent.com/9758711/" + v + ".png"
-    )
+    ),
+    bgColors: ["", "#91ad70","#ff0"],
+    bgColors: [{
+      hex: "#91ad70",
+      name: '柳染',
+      ename: 'yanagizome'
+    }, {
+      hex: '#b5495b',
+      name: '莓',
+      ename: 'ichigo'
+    }, {
+      hex: '#8b81c3',
+      name: '藤',
+      ename: 'fuji'
+    }]
   };
 
   async componentWillMount() {
     let { number } = this.props.match.params;
-    const i = Math.floor(Math.random() * this.state.banners.length);
+    const i = Math.floor(Math.random() * this.state.bgColors.length);
     this.setState({
-      banner: this.state.banners[i]
+      bgColor: this.state.bgColors[i]
     });
 
     import("qrcode.react").then(module => {
@@ -172,8 +186,7 @@ class Post extends Component {
               style={{
                 position: "relative",
                 width: "100%",
-                height: "24rem",
-                backgroundImage: `url(${this.state.banner})`,
+                height: "11rem",
                 backgroundOrigin: "border-box",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
@@ -186,7 +199,9 @@ class Post extends Component {
                   position: "absolute",
                   width: "100%",
                   color: "#fff",
-                  top: "20%"
+                  top: 0,
+                  height: "6rem",
+                  lineHeight: "6rem"
                 }}
               >
                 <span style={{ color: "#303030" }}>{post.title} </span>
@@ -206,16 +221,31 @@ class Post extends Component {
               </h2>
               <div
                 className="post-meta"
+                title=""
+                style={{
+                  position: "absolute",
+                  bottom: "4rem",
+                  left: 0,
+                  width: "100%",
+                  height: "1rem",
+                  backgroundColor: `${this.state.bgColor.hex}`,
+                }}
+                title={'颜色：'+this.state.bgColor.name+'，'+this.state.bgColor.ename+'，'+this.state.bgColor.hex}
+              ></div>
+              <div
+                className="post-meta"
                 style={{
                   position: "absolute",
                   bottom: 0,
                   left: 0,
                   width: "100%",
-                  padding: "2rem",
-                  backgroundColor: "rgba(245, 245, 245, 0.23)"
+                  padding: "0 1rem",
+                  height: '4rem',
+                  lineHeight: "4rem"
+                  // backgroundColor: "rgba(245, 245, 245, 0.23)"
                 }}
               >
-                {post.user && post.user.avatar_url ? (
+                {/* {post.user && post.user.avatar_url ? (
                   <img
                     src={post.user.avatar_url}
                     alt=""
@@ -228,7 +258,7 @@ class Post extends Component {
                   />
                 ) : (
                   ""
-                )}
+                )} */}
                 <div
                   style={{
                     display: "inline-block",
@@ -236,7 +266,7 @@ class Post extends Component {
                     margin: "0 1rem"
                   }}
                 >
-                  <strong>
+                  <span style={{marginRight: '20px'}}>
                     <Icon
                       type="user"
                       style={{
@@ -244,22 +274,14 @@ class Post extends Component {
                       }}
                     />
                     {firstUpperCase(post && post.user ? post.user.login : "")}
-                  </strong>
-                  <br />
-                  <span>
+                  </span>
+                  {/* <br /> */}
+                  <span style={{marginRight: '20px'}}>
                     <Icon type="calendar" style={{ marginRight: "0.5rem" }} />
                     {moment(new Date(post.created_at)).fromNow()}
                   </span>
-                  <br />
-                  <span>
-                    <Icon
-                      type="message"
-                      style={{
-                        marginRight: "0.5rem"
-                      }}
-                    />
-                    {post.comments}
-                  </span>
+                  {/* <br /> */}
+
                 </div>
                 <div
                   style={{
@@ -321,7 +343,9 @@ class Post extends Component {
                   </span>
                 </div>
               </div>
+
             </div>
+
 
             <div
               className="markdown-body post-content"
@@ -336,13 +360,13 @@ class Post extends Component {
             />
 
             <blockquote className="blockquote">
-              <p>注意：</p>
+              <p>注：</p>
               <p>1. 若非声明文章为转载, 则为原创文章.</p>
               <p>2. 欢迎转载, 但需要注明出处.</p>
-              <p>3. 如果本文对您造成侵权，请在文章评论中声明.</p>
             </blockquote>
 
             <div className="comment-box">
+
               <Comments
                 type="issues"
                 owner={CONFIG.owner}

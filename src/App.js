@@ -29,11 +29,6 @@ export default class App extends Component {
               window.scrollTo(0, 0);
             }}
           >
-            <div id="nav">
-              <NavLink to="/">
-                <div id="nav-logo" />
-              </NavLink>
-            </div>
             <div id="content">
               <Row gutter={36}>
                 <Col
@@ -100,9 +95,9 @@ export default class App extends Component {
                   xxl={{ span: 5, offset: 0 }}
                 >
                   <DynamicLoad promise={import("./widget/about")} />
-                  <DynamicLoad promise={import("./widget/stat")} />
-                  <DynamicLoad promise={import("./widget/todo")} />
-                  <DynamicLoad promise={import("./widget/gist")} />
+                  {/* <DynamicLoad promise={import("./widget/stat")} /> */}
+                  {/* <DynamicLoad promise={import("./widget/todo")} /> */}
+                  {/* <DynamicLoad promise={import("./widget/gist")} /> */}
                   {/* <DynamicLoad promise={import("./widget/showcase")} /> */}
                 </Col>
               </Row>

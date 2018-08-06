@@ -11,7 +11,7 @@ export default class extends Component {
     revert: PropTypes.bool
   };
   render() {
-    let title = (this.props.title || []).concat([`Axetroy's NeverLand`]);
+    let title = (this.props.title || []).concat([`wongxinyu's blog`]);
     const props = {
       ...this.props,
       ...{ title }

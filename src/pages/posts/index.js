@@ -98,7 +98,7 @@ class Posts extends Component {
   render() {
     return (
       <DocumentTitle title={["博客文章"]}>
-        <div style={{ backgroundColor: "#eaebec" }}>
+        <div style={{ backgroundColor: "transparent" }}>
           <Row gutter={24}>
             {this.props.POSTS.map((post, i) => {
               return (
@@ -107,7 +107,8 @@ class Posts extends Component {
                     style={{
                       marginBottom: "2rem",
                       minHeight: "300px",
-                      overflow: "hidden"
+                      overflow: "hidden",
+                      boxShadow: "0 0 5px 2px #3C3F41"
                     }}
                     className="post-list"
                     onClick={() => {
@@ -118,7 +119,7 @@ class Posts extends Component {
                     }}
                   >
                     <div>
-                      <h3
+                      <h2
                         className="post-title"
                         style={{
                           wordBreak: "break-word",
@@ -128,7 +129,7 @@ class Posts extends Component {
                         }}
                       >
                         #{post.number} {post.title}
-                      </h3>
+                      </h2>
                     </div>
                     <div>
                       <span>

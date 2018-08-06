@@ -16,14 +16,14 @@ import "./index.css";
 })
 class Footer extends Component {
   state = {
-    created: new Date("2016-11-09 14:22:33")
+    created: new Date("2018-08-03 15:00:00")
   };
 
   render() {
     const LAST_UPDATE_TIME = new Date(+process.env.REACT_APP_PUBLISH_DATE);
     return (
       <div id="footer">
-        <p>Copyright © 2017</p>
+        <p>Copyright © 2018</p>
         <Now>
           {now => {
             const diff = diffTime(this.state.created)(now);
@@ -46,7 +46,7 @@ class Footer extends Component {
           }}
         </Now>
         <p>
-          Created by{" "}
+          from {" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -55,7 +55,7 @@ class Footer extends Component {
             Axetroy
           </a>
         </p>
-        <p>
+        {/* <p>
           <a
             href="https://analytics.google.com/analytics/web/?hl=zh-CN&pli=1#report/defaultid/a98287100w144548599p149233935/"
             target="_blank"
@@ -63,7 +63,7 @@ class Footer extends Component {
           >
             站长统计
           </a>
-        </p>
+        </p> */}
       </div>
     );
   }

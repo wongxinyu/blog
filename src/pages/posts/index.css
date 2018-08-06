@@ -1,5 +1,6 @@
 .post-list {
   cursor: pointer;
+  border-top: 5px solid #b5caa0;
 }
 .post-list:hover {
   background-color: #fafafa;

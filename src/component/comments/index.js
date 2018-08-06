@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { lazyload } from "react-lazyload";
 import moment from "moment";
-
+import { Icon } from "antd";
 import github from "../../lib/github";
 import CONFIG from "../../config.json";
 
@@ -125,7 +125,15 @@ class Comments extends Component {
     return (
       <div>
         <h3>
-          大牛们的评论:
+          陆海潘江<span style={{marginRight: '10px'}}>
+                    <Icon
+                      type="message"
+                      style={{
+                        marginRight: "0.5rem"
+                      }}
+                    />
+                    {this.state.comments.length}:
+                  </span>
           <a
             target="_blank"
             href={
